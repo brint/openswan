@@ -137,7 +137,8 @@ resources:
             tcp: [500, 4500, 1701]
         run_list: ["recipe[apt]",
                    "recipe[chef-solo-search]",
-                   "recipe[openswan]"]
+                   "recipe[openswan]",
+                   "recipe[rax-firewall]"]
 
 
 outputs:
