@@ -1,0 +1,30 @@
+{
+  "name": "openswan",
+  "description": "Installs/Configures openswan",
+  "long_description": "openswan\n========\nInstall and configure openswan for per-user l2tp over ipsec vpn access.\n\n## Requirements\n\nCurrently tested only on Ubuntu 12, and expects a 'users' databag, with user records formatted like this:\n\n```json\n{\n    \"groups\":[\"sysadmin\", \"vpn\"],\n    \"comment\":\"Jane Doe\",\n    \"username\":\"jane\",\n    \"id\":\"jane\",\n    ...\n    \"vpn_password\":\"someverysecurepassword\"\n}\n```\n\nIn order to remove user record without deleting the data bag, add a key to the databag as follows:\n\n```json\n{\n    \"groups\":[\"sysadmin\", \"vpn\"],\n    \"comment\":\"Jane Doe\",\n    \"username\":\"jane\",\n    \"id\":\"jane\",\n    ...\n    \"vpn_password\":\"someverysecurepassword\",\n    \"action\": \"remove\"\n}\n```\n\nThis follows a precedent set in the `users` cookbook maintained by Opscode.\n\n## Attributes\n\nDefault attributes should be overwritten to match your role or environment needs.\n\n    default['openswan']['ppp_link_network'] = \"10.55.55.0\"\n    default['openswan']['preshared_key'] = \"letmein\"\n    default['openswan']['private_virtual_interface_ip'] = \"10.55.55.4\"\n    default['openswan']['private_ip'] = `ifconfig eth1 | grep \"inet addr\" | awk 'BEGIN{FS=\":\"}{print $2}' | awk '{print $1}'`.strip\n    default['openswan']['private_ip_range'] = \"10.55.55.5-10.55.55.100\"\n    default['openswan']['xl2tpd_path'] = \"/etc/xl2tpd\"\n    default['openswan']['ppp_path'] = \"/etc/ppp\"\n\n",
+  "maintainer": "Wanelo, Inc.",
+  "maintainer_email": "dev@wanelo.com",
+  "license": "Apache 2.0",
+  "platforms": {
+  },
+  "dependencies": {
+    "ipaddr_extensions": ">= 0.3.0"
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+  },
+  "version": "0.3.2"
+}
